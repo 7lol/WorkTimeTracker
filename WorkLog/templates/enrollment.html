@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load custom_tags %}
+<h1>WorkLog Home</h1>
+<p>Hello {{employee.name}} {{employee.surname}}! Welcome to WorkLog, Work time tracker!</p>
+<p>Month {{month}} hours recorded {{month.monthWorkingTime}}/{% multiply employee.workingTime month.month.workingDays %}:</p>
+<table>
+    <table id="numbers">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Value</th>
+            <th>Length</th>
+        </tr>
+        {% for i in object_list %}
+        <tr>
+            <td>{{i.startDate|date:"d D M Y"}}</td>
+            <td>{{i.startDate|time:"H:i"}}</td>
+            <td><a href="{% url 'enrollment' month.pk i.pk %}">{{ i }}</a></td>
+            <td>{{i.length}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</table>
+<form action="" method="POST"> {% csrf_token %}
+    <table>{{form.as_table}}</table>
+    <input type="submit" name="put" value="Submit">
+</form>
+{% endblock %}
