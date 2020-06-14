@@ -6,6 +6,7 @@
     <table id="numbers">
         {{ form.as_table }}
     </table>
+    <input type="button" value="Back" class="button_active" onclick="location.href='{% url 'enrollmentsList' object.month.pk %}';" />
     <input type="submit" value="Submit">
 </form>
 {% endblock %}

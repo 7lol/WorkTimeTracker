@@ -5,6 +5,8 @@ from WorkLog import views
 from WorkLog.decorators import enrollment_is_yours
 
 urlpatterns = [
+    path('logout', views.LogoutView.as_view(), name='logout'),
+    #path('login', views.login, name='login'),
     path('', views.index, name='index'),
     path('month/<int:month_id>', views.employee_enrolment_list, name='enrollmentsList'),
     path('enrollment/pk=<int:pk>/month_id=<int:month_id>', enrollment_is_yours(login_required(views.EnrollmentUpdate.as_view())), name='enrollment_update'),

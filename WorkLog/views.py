@@ -1,5 +1,6 @@
 import datetime
 
+from django.contrib.auth.views import logout_then_login, LogoutView
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
@@ -104,7 +105,7 @@ def employee_enrolment_list(request, *args, **kwargs):
             form = CreateEnrolmentForm(request.POST, user=request.user)
             if form.is_valid():
                 activity_pk = form.cleaned_data['activity']
-                project_pk = form.cleaned_data['project'].id
+                project_pk = form.cleaned_data['project']
                 newEnrollment = EmployeeHoursEnrollment.objects.create(month=EmployeeMonth.objects.get(pk=month.id),
                                                                        employee=request.user.employee,
                                                                        startDate=form.cleaned_data['start_date'],
@@ -148,7 +149,22 @@ class EnrollmentUpdate(UpdateView):
 
 class EnrollmentDelete(DeleteView):
     model = EmployeeHoursEnrollment
+
     def get_success_url(self):
         return reverse('enrollmentsList', kwargs={
             'month_id': self.object.month.pk,
         })
+
+
+class LogoutView(LogoutView):
+    """
+    Logout n login back
+    """
+    template_name = "registration/loggedout.html"
+
+
+def login(request):
+    """
+    Logout n login back
+    """
+    return login(request)

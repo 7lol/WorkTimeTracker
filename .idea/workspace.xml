@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af85fd4d-1e05-4a08-b918-faadc7400f0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WorkLog/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/templates/enrollment.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/enrollment.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WorkLog/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/registration/loggedout.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/registration/loggedout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WorkLog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WorkLog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/views.py" afterDir="false" />
     </list>
