@@ -20,6 +20,7 @@ class Employee(models.Model):
     surname = models.CharField(max_length=256, blank=False)
     workingTime = models.PositiveIntegerField(default=8)
     position = models.ManyToManyField(Position)
+    project = models.ManyToManyField('Project')
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -61,7 +62,7 @@ class EmployeeMonth(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=64, blank=False)
-    manager = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    manager = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='managed_projects')
 
     def __str__(self):
         return self.name
@@ -87,14 +88,32 @@ class EmployeeHoursEnrollment(models.Model):
     def __str__(self):
         return '%s, %s, %s' % (self.employee, self.project, self.activity)
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            pass
-            #self.month.monthWorkingTime = self.month.monthWorkingTime + self.length
+    def create(self, *args, **kwargs):
+        objects = EmployeeHoursEnrollment.objects.filter(month=self.month)
+        if len(objects):
+                self.month.monthWorkingTime = EmployeeHoursEnrollment.objects.filter(month=self.month).aggregate(Sum('length'))['length__sum'] + self.length
         else:
-            self.month.monthWorkingTime = EmployeeHoursEnrollment.objects.filter(month=self.month).aggregate(Sum('length'))['length__sum']
+            self.month.monthWorkingTime = self.length
         self.month.save()
+        super(EmployeeHoursEnrollment, self).create(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        objects = EmployeeHoursEnrollment.objects.filter(month=self.month)
         super(EmployeeHoursEnrollment, self).save(*args, **kwargs)
+        if len(objects):
+            self.month.monthWorkingTime = EmployeeHoursEnrollment.objects.filter(month=self.month).aggregate(Sum('length'))['length__sum']
+        else:
+            self.month.monthWorkingTime = 0
+        self.month.save()
+
+    def delete(self, *args, **kwargs):
+        objects = EmployeeHoursEnrollment.objects.filter(month=self.month)
+        if len(objects):
+            self.month.monthWorkingTime = EmployeeHoursEnrollment.objects.filter(month=self.month).aggregate(Sum('length'))['length__sum'] - self.length
+        else:
+            self.month.monthWorkingTime = 0
+        self.month.save()
+        super(EmployeeHoursEnrollment, self).delete(*args, **kwargs)
 
     class Meta:
         ordering = ['startDate']

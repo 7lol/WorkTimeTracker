@@ -1,14 +1,14 @@
 #Custom decorator
 from django.http import HttpResponse
 
-from WorkLog.models import EmployeeMonth
+from WorkLog.models import EmployeeHoursEnrollment
 
 
-def month_is_yours(func):
+def enrollment_is_yours(func):
     def check_and_call(request, *args, **kwargs):
-        pk = kwargs.pop("pk")
-        months = EmployeeMonth.objects.filter(pk=pk)
-        if len(months) != 1 or not months.first().employee == request.user.employee:
+        pk = kwargs.get("pk")
+        enrollments = EmployeeHoursEnrollment.objects.filter(pk=pk)
+        if len(enrollments) != 1 or not enrollments.first().employee == request.user.employee:
             return HttpResponse('Unauthorized', content_type="application/json", status=401)
-        return func(request,  month=months.first(), *args, **kwargs)
+        return func(request,  *args, **kwargs)
     return check_and_call

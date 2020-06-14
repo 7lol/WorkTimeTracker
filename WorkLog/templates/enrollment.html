@@ -12,13 +12,17 @@
             <th>Time</th>
             <th>Value</th>
             <th>Length</th>
+            <th>Edit</th>
+            <th>Remove</th>
         </tr>
         {% for i in object_list %}
         <tr>
             <td>{{i.startDate|date:"d D M Y"}}</td>
             <td>{{i.startDate|time:"H:i"}}</td>
-            <td><a href="{% url 'enrollment' month.pk i.pk %}">{{ i }}</a></td>
+            <td>{{ i }}</td>
             <td>{{i.length}}</td>
+            <td><a href="{% url 'enrollment_update' pk=i.pk month_id=month.pk %}">Edit</a></td>
+            <td><a href="{% url 'enrollment_delete' pk=i.pk month_id=month.pk %}">Remove</a></td>
         </tr>
         {% endfor %}
 

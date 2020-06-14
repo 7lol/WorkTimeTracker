@@ -5,9 +5,29 @@
 <h1>WorkLog Home</h1>
 <p>Hello {{employee.name}} {{employee.surname}}! Welcome to WorkLog, Work time tracker!</p>
 <p>Months:</p>
-<ul>
-    {% for i in months %}
-        <li><a href="{% url 'enrollmentsList' i.pk %}">{{ i.month.name }} working hours: {{i.monthWorkingTime}}/{% multiply employee.workingTime i.month.workingDays %}</a></li>
-    {% endfor %}
-</ul>
+<table>
+    <table id="numbers">
+        <tr>
+            <th>Month</th>
+            <th>Start date</th>
+            <th>Ending date</th>
+            <th>Value</th>
+            <th>Time recorded</th>
+            <th>Time to record</th>
+            <th>Show</th>
+        </tr>
+        {% for i in months %}
+        <tr>
+            <td>{{i.month.name}}</td>
+            <td>{{i.month.startingDate|date:"d M Y"}}</td>
+            <td>{{i.month.endingDate|date:"d M Y"}}</td>
+            <td>{{ i }}</td>
+            <td>{{i.monthWorkingTime}}</td>
+            <td>{% multiply employee.workingTime i.month.workingDays %}</td>
+            <td><a href="{% url 'enrollmentsList' i.pk %}">Show</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</table>
 {% endblock %}

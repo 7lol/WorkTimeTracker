@@ -2,17 +2,17 @@ import datetime
 
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from WorkLog.decorators import month_is_yours
 from WorkLog.forms import CreateEnrolmentForm
 from WorkLog.models import Position, Month, EmployeeMonth, EmployeeHoursEnrollment, Activity, Project
 from WorkLog.serializers import PositionSerializer
 from rest_framework import viewsets, status
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView, DeleteView
 
 
 class PositionViewSet(viewsets.ModelViewSet):
@@ -93,9 +93,9 @@ def index(request):
 
 
 @login_required(login_url="/accounts/login/")
-def employee_enrolment_list(request, pk):
+def employee_enrolment_list(request, *args, **kwargs):
     # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-    months = EmployeeMonth.objects.filter(pk=pk)
+    months = EmployeeMonth.objects.filter(pk=kwargs['month_id'])
     if len(months) != 1 or not months.first().employee == request.user.employee:
         return HttpResponse('Unauthorized', content_type="application/json", status=401)
     month = months.first()
@@ -105,7 +105,7 @@ def employee_enrolment_list(request, pk):
             if form.is_valid():
                 activity_pk = form.cleaned_data['activity']
                 project_pk = form.cleaned_data['project'].id
-                newEnrollment = EmployeeHoursEnrollment.objects.create(month=EmployeeMonth.objects.get(month__id=month.id),
+                newEnrollment = EmployeeHoursEnrollment.objects.create(month=EmployeeMonth.objects.get(pk=month.id),
                                                                        employee=request.user.employee,
                                                                        startDate=form.cleaned_data['start_date'],
                                                                        length=form.cleaned_data['length'],
@@ -120,7 +120,7 @@ def employee_enrolment_list(request, pk):
     items = EmployeeHoursEnrollment.objects.filter(month=month)
     context = {
         'form': form,
-        'month': month,
+        'month': EmployeeMonth.objects.get(pk=month.id),
         'object_list': items,
         'employee': request.user.employee
     }
@@ -128,27 +128,27 @@ def employee_enrolment_list(request, pk):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'enrollment.html', context=context)
 
-class EmployeeHoursEnrollmentListView(ListView):
+
+class EnrollmentUpdate(UpdateView):
     model = EmployeeHoursEnrollment
-    template_name = 'enrollment.html'
-    #form_class = CreateEnrolmentForm
+    fields = ['startDate', 'activity', 'project', 'length']
 
-    def get(self, request, *args, **kwagrs):
-        # either
-        self.object_list = self.get_queryset()
+    def form_valid(self, form):
+        print(123)
+        if len(self.request.user.employee.project.filter(pk=form.instance.project.pk)) != 1:
+            form.add_error('project', 'Your not allowed to sing to this project.')
+            return super().form_invalid(form)
+        return super().form_valid(form)
 
-        month = kwagrs['month']
-        self.object_list = self.object_list.filter(month=month)
-        # in both cases
-        context = self.get_context_data(month=month)
-        return self.render_to_response(context)
+    def get_success_url(self):
+        return reverse('enrollmentsList', kwargs={
+            'month_id': self.object.month.pk,
+        })
 
-    def get_queryset(self):
-        return EmployeeHoursEnrollment.objects.filter(employee=self.request.user.employee)
 
-    def get_context_data(self, **kwargs):
-        employee = self.request.user.employee
-        context = super().get_context_data(**kwargs)
-        context['employee'] = employee
-        context['month'] = kwargs['month']
-        return context
+class EnrollmentDelete(DeleteView):
+    model = EmployeeHoursEnrollment
+    def get_success_url(self):
+        return reverse('enrollmentsList', kwargs={
+            'month_id': self.object.month.pk,
+        })
