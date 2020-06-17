@@ -1,7 +1,7 @@
 #Custom decorator
 from django.http import HttpResponse
 
-from WorkLog.models import EmployeeHoursEnrollment
+from worklog.models import EmployeeHoursEnrollment
 
 
 def enrollment_is_yours(func):

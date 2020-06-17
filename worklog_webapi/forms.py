@@ -1,11 +1,7 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from django.utils import timezone
-from django.utils.timezone import utc
-from django.utils.translation import ugettext_lazy as _
 
-from WorkLog.models import Activity, Project
-from WorkLog.widget import BootstrapDateTimePickerInput
+from worklog_webapi.widget import BootstrapDateTimePickerInput
 
 
 class CreateEnrolmentForm(forms.Form):
