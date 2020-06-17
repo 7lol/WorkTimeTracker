@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load custom_tags %}
+<h1>WorkLog Home</h1>
+<p>Hello {{employee.name}} {{employee.surname}}! Welcome to WorkLog, work time tracker!</p>
+<table>
+    <table id="numbers">
+        <tr>
+            <th>Month</th>
+            <th>Start date</th>
+            <th>Ending date</th>
+            <th>Value</th>
+            <th>Time recorded</th>
+            <th>Time to record</th>
+            <th>Show</th>
+        </tr>
+        {% for i in months %}
+        <tr>
+            <td>{{i.month.name}}</td>
+            <td>{{i.month.startingDate|date:"d M Y"}}</td>
+            <td>{{i.month.endingDate|date:"d M Y"}}</td>
+            <td>{{ i }}</td>
+            <td>{{i.monthWorkingTime}}</td>
+            <td>{% multiply employee.workingTime i.month.workingDays %}</td>
+            <td><a href="{% url 'enrollmentsList' i.pk %}">Show</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</table>
+{% endblock %}

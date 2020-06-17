@@ -2,17 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af85fd4d-1e05-4a08-b918-faadc7400f0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog_restapi/mixins.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog_restapi/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog_restapi/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog_webapi/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog_webapi/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/worklog_webapi/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/templates/enrollment.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/enrollment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkLog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkLog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/decorators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/0002_employee_position.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/0003_auto_20200614_0046.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/0004_auto_20200614_0250.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/0005_auto_20200614_0535.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/0006_auto_20200614_0601.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/0007_auto_20200614_1254.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_restapi/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/WorkLog/employeehoursenrollment_confirm_delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/WorkLog/employeehoursenrollment_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/WorkLog/employeehoursenrollment_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/enrollment.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/enrollment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/registration/loggedout.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/registration/loggedout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templates/widgets/bootstrap_datetimepicker.html" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templates/widgets/bootstrap_datetimepicker.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templatetags/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/templatetags/custom_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/templatetags/custom_tags.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkLog/widget.py" beforeDir="false" afterPath="$PROJECT_DIR$/worklog_webapi/widget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkTimeTracker/api.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkTimeTracker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkTimeTracker/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkTimeTracker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/WorkTimeTracker/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +53,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -40,7 +71,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/WorkLog/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/worklog_webapi" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -48,15 +79,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\WorkTimeTracker\worklog_webapi" />
+      <recent name="E:\Projects\WorkTimeTracker\worklog_restapi" />
+      <recent name="E:\Projects\WorkTimeTracker\worklog" />
       <recent name="E:\Projects\WorkTimeTracker\WorkLog\templates" />
       <recent name="E:\Projects\WorkTimeTracker\WorkLog\templatetags" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\WorkTimeTracker\worklog_restapi" />
+      <recent name="E:\Projects\WorkTimeTracker\WorkTimeTracker" />
+      <recent name="E:\Projects\WorkTimeTracker\worklog_webapi" />
       <recent name="E:\Projects\WorkTimeTracker\WorkLog\templates\WorkLog" />
       <recent name="E:\Projects\WorkTimeTracker\WorkLog\templates" />
-      <recent name="E:\Projects\WorkTimeTracker\WorkLog" />
-      <recent name="E:\Projects\WorkTimeTracker\WorkLog\static" />
-      <recent name="E:\Projects\WorkTimeTracker" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -85,10 +119,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" width="1092" height="729" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1591993261103" />
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592084520703">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592151938126">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592084520703" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592151938126" />
     <state x="740" y="293" key="FileChooserDialogImpl" timestamp="1591993349676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -97,13 +131,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1591993647516" />
-    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592075113455">
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592167404710">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592075113455" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1592127004544">
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592167404710" />
+    <state x="701" y="163" key="refactoring.ChangeSignatureDialog" timestamp="1592174045450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592127004544" />
+    <state x="701" y="163" key="refactoring.ChangeSignatureDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592174045450" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1592153057421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592153057421" />
   </component>
 </project>
