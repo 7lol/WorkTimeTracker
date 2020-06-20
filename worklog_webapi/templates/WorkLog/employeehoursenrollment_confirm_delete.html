@@ -4,7 +4,7 @@
 
 <h1>Delete Enrollment</h1>
 
-<p>Are you sure you want to delete this enrollment:</p>
+<p>Hello {{object.employee.name}} {{object.employee.surname}}, are you sure you want to delete this enrollment:</p>
 <table id="numbers">
     <tr>
         <th>Date</th>
@@ -21,7 +21,8 @@
 </table>
 <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes, delete.">
+    <input class="buttonBack" type="button" value="Back" onclick="location.href='{% url 'enrollmentsList' object.month.pk %}';" />
+    <input class="buttonDelete" type="submit" value="Yes, delete.">
 </form>
 
 {% endblock %}
