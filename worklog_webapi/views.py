@@ -15,20 +15,8 @@ from django.views.generic.edit import UpdateView, DeleteView
 def index(request):
     """View function for home page of site."""
 
-    # Generate counts of some of the main objects
-    output = []
-    months = Month.objects.all()
-    employee_months = EmployeeMonth.objects.filter(employee=request.user.employee)
-    for length, month in enumerate(months, start=1):
-        for employee_month in employee_months:
-            if month == employee_month.month:
-                output.append(employee_month)
-                break
-        if not length == len(output):
-            output.append(EmployeeMonth.objects.create(month=month, employee=request.user.employee))
-
     context = {
-        'months': output,
+        'months': EmployeeMonth.get_employee_months(request.user),
         'employee': request.user.employee
     }
 

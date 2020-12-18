@@ -53,6 +53,23 @@ class EmployeeMonth(models.Model):
     monthWorkingTime = models.DecimalField(default=0, decimal_places=2, max_digits=10)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
 
+    # returns all user months, and adds new one if needed.
+    @staticmethod
+    def get_employee_months(user):
+        output = []
+        months = Month.objects.all()
+        employee_months = EmployeeMonth.objects.filter(employee=user.employee)
+        for month in months:
+            add_new_month = True
+            for employee_month in employee_months:
+                if month == employee_month.month:
+                    output.append(employee_month)
+                    add_new_month = False
+                    break
+            if add_new_month and month.endingDate > user.date_joined:
+                output.append(EmployeeMonth.objects.create(month=month, employee=user.employee))
+        return output
+
     def __str__(self):
         return self.month.name
 
@@ -86,12 +103,12 @@ class EmployeeHoursEnrollment(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '%s, %s, %s' % (self.employee, self.project, self.activity)
+        return '%s, %s' % (self.project, self.activity)
 
     def create(self, *args, **kwargs):
         objects = EmployeeHoursEnrollment.objects.filter(month=self.month)
         if len(objects):
-                self.month.monthWorkingTime = EmployeeHoursEnrollment.objects.filter(month=self.month).aggregate(Sum('length'))['length__sum'] + self.length
+            self.month.monthWorkingTime = EmployeeHoursEnrollment.objects.filter(month=self.month).aggregate(Sum('length'))['length__sum'] + self.length
         else:
             self.month.monthWorkingTime = self.length
         self.month.save()

@@ -2,32 +2,36 @@
 
 {% block content %}
 {% load custom_tags %}
-<h1>WorkLog Home</h1>
-<p>Hello {{employee.name}} {{employee.surname}}!</p>
-<p>Month {{month}} hours recorded {{month.monthWorkingTime}}/{% multiply employee.workingTime month.month.workingDays %}:</p>
-<table>
-    <table id="numbers">
-        <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Value</th>
-            <th>Length</th>
-            <th>Edit</th>
-            <th>Remove</th>
-        </tr>
-        {% for i in object_list %}
-        <tr>
-            <td>{{i.startDate|date:"d D M Y"}}</td>
-            <td>{{i.startDate|time:"H:i"}}</td>
-            <td>{{ i }}</td>
-            <td>{{i.length}}</td>
-            <td><a href="{% url 'enrollment_update' pk=i.pk month_id=month.pk %}">Edit</a></td>
-            <td><a href="{% url 'enrollment_delete' pk=i.pk month_id=month.pk %}">Remove</a></td>
-        </tr>
-        {% endfor %}
+<h1>WorkLog</h1>
+{% if object_list|length > 0 %}
+<p>In month {{month}} you recorded {{month.monthWorkingTime}}/{% multiply employee.workingTime month.month.workingDays %} hours.</p>
+<table id="numbers">
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Project</th>
+        <th>Activity</th>
+        <th>Length</th>
+        <th>Edit</th>
+        <th>Remove</th>
+    </tr>
+    {% for i in object_list %}
+    <tr>
+        <td>{{i.startDate|date:"d D M Y"}}</td>
+        <td>{{i.startDate|time:"H:i"}}</td>
+        <td>{{i.project}}</td>
+        <td>{{i.activity}}</td>
+        <td>{{i.length}}</td>
+        <td><a href="{% url 'enrollment_update' pk=i.pk month_id=month.pk %}">Edit</a></td>
+        <td><a href="{% url 'enrollment_delete' pk=i.pk month_id=month.pk %}">Remove</a></td>
+    </tr>
+    {% endfor %}
 
-    </table>
 </table>
+{% else %}
+<p>You don't have any recorded hours in {{month}} yet.</p>
+{% endif %}
+<br>
 <form action="" method="POST"> {% csrf_token %}
     <table>{{form.as_table}}</table>
     <input class="buttonBack" type="button" value="Back" onclick="location.href='{% url 'index' %}';" />

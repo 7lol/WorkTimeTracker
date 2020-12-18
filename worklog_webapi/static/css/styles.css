@@ -1,10 +1,5 @@
-.sidebar-nav {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
-}
 .body {
-    margin-top: 20px;
+    margin: 0;
 }
 
 .buttonBack {
@@ -17,6 +12,9 @@
   display: inline-block;
   font-size: 16px;
 }
+.buttonBack:hover {
+  background-color: #c9c9c9;
+}
 .buttonDelete {
   background-color: #f44336;
   border: black;
@@ -28,6 +26,9 @@
   font-size: 16px;
 }
 
+.buttonDelete:hover {
+  background-color: #d2190b;
+}
 .button {
   background-color: #4CAF50; /* Green */
   border: black;
@@ -38,7 +39,9 @@
   display: inline-block;
   font-size: 16px;
 }
-
+.button:hover {
+  background-color: #357a38; /* Green */
+}
 
 #numbers {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -59,4 +62,48 @@ padding-bottom: 12px;
 text-align: left;
 background-color: #4CAF50;
 color: white;
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+ul.navbar li {
+  float: left;
+}
+
+ul.navbar li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.navbar li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+ul.navbar li a.active {
+  color: white;
+  background-color: #4CAF50;
+}
+ul.navbar li.right {
+  ##float: block;
+  ##position: fixed;
+  ##left: 730px;
+}
+
+@media screen and (max-width: 800px) {
+  ul.navbar li.right {
+  float:right;
+  position: static;
+  left: 0px;
+  }
 }
