@@ -1,12 +1,12 @@
 import datetime
 
 from django.contrib.auth.views import LogoutView, LoginView
-from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
 from worklog_webapi.forms import EnrollmentForm
-from worklog.models import Position, Month, EmployeeMonth, EmployeeHoursEnrollment, Activity, Project
+from worklog.models import EmployeeMonth, EmployeeHoursEnrollment, Activity, Project
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -41,13 +41,13 @@ def employee_enrolment_list(request, *args, **kwargs):
                 project_pk = form.cleaned_data['project']
                 newEnrollment = EmployeeHoursEnrollment.objects.create(month=EmployeeMonth.objects.get(pk=month.id),
                                                                        employee=request.user.employee,
-                                                                       startDate=form.cleaned_data['start_date'],
+                                                                       startDate=form.cleaned_data['startDate'],
                                                                        length=form.cleaned_data['length'],
                                                                        description=form.cleaned_data['description'],
-                                                                       activity=Activity.objects.get(pk=activity_pk),
-                                                                       project=Project.objects.get(pk=project_pk))
+                                                                       activity=activity_pk,
+                                                                       project=project_pk)
                 newEnrollment.save()
-            form = EnrollmentForm(user=request.user, initial={'start_date': datetime.date.today()})
+                form = EnrollmentForm(user=request.user, initial={'start_date': datetime.date.today()})
         else:
             form = EnrollmentForm(request.POST, user=request.user)
     else:
@@ -71,7 +71,6 @@ class EnrollmentUpdate(UpdateView):
     def get_form_kwargs(self):
         kwargs = super(UpdateView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
-        print(self.object)
         kwargs['instance'] = self.object
         return kwargs
 

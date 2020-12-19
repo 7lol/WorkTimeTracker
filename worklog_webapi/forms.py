@@ -1,14 +1,19 @@
+from datetime import datetime
+
 from django import forms
 from django.utils import timezone
 
 from worklog.models import EmployeeHoursEnrollment
 from worklog_webapi.widget import BootstrapDateTimePickerInput
 
+
 class EnrollmentForm(forms.ModelForm):
+    startDate = forms.DateTimeField(
+        input_formats=["%d/%m/%Y %H:%M"],
+        widget=BootstrapDateTimePickerInput())
 
     class Meta:
         model = EmployeeHoursEnrollment
-        widgets = {'startDate': BootstrapDateTimePickerInput()}
         length = forms.FloatField()
         description = forms.CharField(max_length=256)
         activity = forms.ChoiceField()
