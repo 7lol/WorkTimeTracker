@@ -53,6 +53,11 @@ class EmployeeMonth(models.Model):
     monthWorkingTime = models.DecimalField(default=0, decimal_places=2, max_digits=10)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
 
+    # returns created EmployeeMonth with given month, and user
+    @staticmethod
+    def create(month, employee):
+        return EmployeeMonth.objects.create(month=month, employee=employee)
+
     # returns all user months, and adds new one if needed.
     @staticmethod
     def get_employee_months(user):
@@ -66,8 +71,9 @@ class EmployeeMonth(models.Model):
                     output.append(employee_month)
                     add_new_month = False
                     break
-            if add_new_month and month.endingDate > user.date_joined:
-                output.append(EmployeeMonth.objects.create(month=month, employee=user.employee))
+            if  add_new_month and month.endingDate > user.date_joined:
+                employee_month = EmployeeMonth.create(month, user.employee)
+                output.append(employee_month)
         return output
 
     def __str__(self):
@@ -95,7 +101,7 @@ class Activity(models.Model):
 
 class EmployeeHoursEnrollment(models.Model):
     startDate = models.DateTimeField()
-    length = models.DecimalField(default=0, decimal_places=2, max_digits=10)
+    length = models.DecimalField(default=0.25, decimal_places=2, max_digits=10)
     description = models.CharField(max_length=256, blank=True, default='')
     month = models.ForeignKey(EmployeeMonth, on_delete=models.CASCADE)
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE)

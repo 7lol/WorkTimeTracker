@@ -5,24 +5,14 @@
 <h1>Delete Enrollment</h1>
 
 <p>Are you sure you want to delete this enrollment?</p>
+
 <table id="numbers">
-    <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Value</th>
-        <th>Length</th>
-    </tr>
-    <tr>
-        <td>{{object.startDate|date:"d D M Y"}}</td>
-        <td>{{object.startDate|time:"H:i"}}</td>
-        <td>{{ object }}</td>
-        <td>{{object.length}}</td>
-    </tr>
+    {{ object.form.as_table }}
 </table>
 <br>
 <form action="" method="POST">
     {% csrf_token %}
-    <input class="buttonBack" type="button" value="Back" onclick="location.href='{% url 'enrollmentsList' object.month.pk %}';" />
+    <input class="buttonBack" type="button" value="Back" onclick="location.href='{% url 'enrollmentsList' object.instance.month.pk %}';" />
     <input class="buttonDelete" type="submit" value="Yes, delete.">
 </form>
 

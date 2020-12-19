@@ -4,9 +4,20 @@
 
 {% block content %}
 <h2>Login</h2>
-<form method="post">
+<form method="post" style="margin-top: 20px">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
+    <table class="numbers">
+    <tr>
+        <td><label for="id_username" style="margin-top: 5px">Username</label></td>
+        <td><input id="id_username" style="margin: 5px 20px 5px 20px;" name="username"
+                   type="text" class="form-control"></td>
+    </tr>
+    <tr>
+        <td><label for="id_password" style="margin-top: 5px">Password</label></td>
+        <td><input id="id_password" style="margin: 5px 20px 5px 20px;" name="password"
+                   type="password" class="form-control"></td>
+    </tr>
+</table>
+    <button style="margin-top: 20px" class="button" type="submit">Login</button>
 </form>
 {% endblock %}

@@ -100,7 +100,7 @@ ul.navbar li.right {
   ##left: 730px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   ul.navbar li.right {
   float:right;
   position: static;

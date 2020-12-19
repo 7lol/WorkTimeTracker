@@ -10,7 +10,6 @@
             <th>Month</th>
             <th>Start date</th>
             <th>Ending date</th>
-            <th>Value</th>
             <th>Time recorded</th>
             <th>Time to record</th>
             <th>Show</th>
@@ -20,7 +19,6 @@
             <td>{{i.month.name}}</td>
             <td>{{i.month.startingDate|date:"d M Y"}}</td>
             <td>{{i.month.endingDate|date:"d M Y"}}</td>
-            <td>{{ i }}</td>
             <td>{{i.monthWorkingTime}}</td>
             <td>{% multiply employee.workingTime i.month.workingDays %}</td>
             <td><a href="{% url 'enrollmentsList' i.pk %}">Show</a></td>

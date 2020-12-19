@@ -31,8 +31,11 @@
         <li>
             <a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a>
         </li>
-        {% if employee.user %}
-        <li class="right"><a href="{% url 'logout' %}">Logout {{ employee.user.username }}</a></li>
+        {% if user.employee %}
+        {% if user.is_superuser %}
+        <li><a href="{% url 'admin:index' %}" target="_blank">Admin panel</a></li>
+        {% endif %}
+        <li class="right"><a href="{% url 'logout' %}">Logout <b>{{ user.username }}</b></a></li>
         {% endif %}
     </ul>
     <div>
