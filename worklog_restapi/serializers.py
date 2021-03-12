@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from worklog.models import Position, Employee, Month, Project, Activity, EmployeeHoursEnrollment, EmployeeMonth
-from worklog_restapi import mixins
+from worklog.models import Month, Project, Activity, EmployeeHoursEnrollment, EmployeeMonth
 
 
 class MonthSerializer(serializers.HyperlinkedModelSerializer):
@@ -13,7 +12,8 @@ class MonthSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class EmployeeMonthSerializer(serializers.HyperlinkedModelSerializer):
-    link = serializers.HyperlinkedIdentityField(view_name='rest_enrollmentsList', format='html', lookup_field='pk', lookup_url_kwarg='month_id', read_only=True)
+    link = serializers.HyperlinkedIdentityField(view_name='rest_enrollmentsList', format='html', lookup_field='pk',
+                                                lookup_url_kwarg='month_id', read_only=True)
     month = MonthSerializer()
 
     class Meta:
