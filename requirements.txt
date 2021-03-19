@@ -1,5 +1,5 @@
 pymysql
 Django==3.0.7
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 mysqlclient==1.4.6
 sqlparse==0.3.1
