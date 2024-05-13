@@ -1,5 +1,5 @@
 pymysql
-Django==3.1.13
+Django==3.2.25
 djangorestframework==3.11.0
 mysqlclient==1.4.6
 sqlparse==0.3.1
